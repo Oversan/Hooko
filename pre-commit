@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+PATCH_FILE="working-tree.patch" 
+NPM_BIN="./node_modules/.bin"
+
+function cleanup {
+    exit_code=$?
+    if [ -f "$PATCH_FILE" ]; then
+        patch -p0 < "$PATCH_FILE"
+        rm "$PATCH_FILE"
+    fi
+    exit $exit_code
+}
+
+#Прибираемся при выходе из скрипта
+trap cleanup EXIT SIGINT SIGHUP
+
+# Создаем  патч
+git diff > "$PATCH_FILE" --no-prefix
+# Сбрасываем не застэйдженный изменения
+git checkout -- .
+
+# получаем список файлов в которых были изменения, которые мы хотим закоммитить
+git_cached_files=$(git diff --cached --name-only --diff-filter=ACMR | xargs echo)
+if [ "$git_cached_files" ]; then
+    #Собственно натравливаем CSScomb.js
+    $NPM_BIN/csscomb -v -l $git_cached_files || exit 1
+fi
