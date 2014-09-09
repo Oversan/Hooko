@@ -1,6 +1,6 @@
 Hooko
 =====
 
-Hooko it is a script for add pre-commit git hook for use [csscomb](https://github.com/csscomb/csscomb.js).
+Hooko it is a script for add pre-commit git hook for use csscomb.
 
-csscomb - css/scss/sass/less coding style formatter.
+[csscomb](https://github.com/csscomb/csscomb.js) - css/scss/sass/less coding style formatter.
