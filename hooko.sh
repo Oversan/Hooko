@@ -2,6 +2,7 @@
 
 ESC_SEQ="\x1b["
 COL_CYAN=$ESC_SEQ"36;01m"
+COL_RED=$ESC_SEQ"31;01m"
 COL_RESET=$ESC_SEQ"39;49;00m"
 
 exists() {
@@ -31,5 +32,17 @@ else
     echo -e $successConfigMsg
   else
     echo $COL_CYAN"You have no installed curl or wget!!!"$COL_RESET
+    echo -e $COL_RED"Sctipt is terminated"$COL_RESET
+    exit
   fi
+fi
+
+if exists node; then
+  npm install csscomb --save-dev
+  npm install csscomb -g
+  echo -e $COL_CYAN"We have installed csscombjs as npm packet"$COL_RESET
+else
+  echo -e $COL_CYAN"You should install NodeJs"$COL_RESET
+  echo -e $COL_RED"Sctipt is terminated"$COL_RESET
+  exit
 fi
