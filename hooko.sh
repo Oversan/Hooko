@@ -33,4 +33,3 @@ else
     echo $COL_CYAN"You have no installed curl or wget!!!"$COL_RESET
   fi
 fi
-
