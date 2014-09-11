@@ -33,7 +33,7 @@ else
   else
     echo $COL_CYAN"You have no installed curl or wget!!!"$COL_RESET
     echo -e $COL_RED"Sctipt is terminated"$COL_RESET
-    exit
+    exit 1
   fi
 fi
 
@@ -43,6 +43,8 @@ if exists node; then
   echo -e $COL_CYAN"We have installed csscombjs as npm packet"$COL_RESET
 else
   echo -e $COL_CYAN"You should install NodeJs"$COL_RESET
+  rm .git/hooks/pre-commit
+  rm .csscomb.json
   echo -e $COL_RED"Sctipt is terminated"$COL_RESET
-  exit
+  exit 1
 fi
