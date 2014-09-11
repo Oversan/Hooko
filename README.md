@@ -7,12 +7,23 @@ Hooko it is a script for add pre-commit git hook for use csscomb.
 
 **To install Hooko:**
 
+Via curl:
 ```bash
-curl -sSL https://raw.githubusercontent.com/Oversan/Hooko/master/hooko.sh | bash -s stable
+curl -S https://raw.githubusercontent.com/Oversan/Hooko/master/hooko.sh | bash
+```
+
+Via wget:
+```bash
+wget https://raw.githubusercontent.com/Oversan/Hooko/master/hooko.sh -O - | bash
 ```
 
 **To uninstall Hooko:**
 
+Via curl:
 ```bash
-curl -sSL https://raw.githubusercontent.com/Oversan/Hooko/master/hooko-uninstall.sh | bash -s stable
+curl -S https://raw.githubusercontent.com/Oversan/Hooko/master/hooko-uninstall.sh | bash
+```
+Via wget:
+```bash
+wget https://raw.githubusercontent.com/Oversan/Hooko/master/hooko-uninstall.sh -O - | bash
 ```
