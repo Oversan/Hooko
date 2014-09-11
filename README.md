@@ -4,6 +4,7 @@ Hooko
 Hooko it is a script for add pre-commit git hook for use csscomb.
 
 [csscomb](https://github.com/csscomb/csscomb.js) - css/scss/sass/less coding style formatter. <br />
+csscomb requires installed NodeJs
 
 ####To install Hooko:
 Script should be executed in root of your application
@@ -28,5 +29,3 @@ Via wget:
 ```bash
 wget https://raw.githubusercontent.com/Oversan/Hooko/master/hooko-uninstall.sh -O - | bash
 ```
-####Requirements
-NodeJs for csscomb
