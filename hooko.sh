@@ -38,8 +38,13 @@ else
 fi
 
 if exists node; then
-  npm install csscomb --save-dev
-  npm install csscomb -g
+  if [ "$(uname)" == "Darwin" ]; then
+    npm install csscomb --save-dev
+    npm install csscomb -g
+  else
+    sudo npm install csscomb --save-dev
+    npm install csscomb -g
+  fi
   echo -e $COL_CYAN"We have installed csscombjs as npm packet"$COL_RESET
 else
   echo -e $COL_CYAN"You should install NodeJs"$COL_RESET
