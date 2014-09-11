@@ -15,7 +15,11 @@ if [ -e ".git/hooks/pre-commit" ]; then
 fi
 
 if [ -e -a "node_modules/.bin/@csscomb" ]; then
-  npm uninstall csscomb --save-dev
+  if [ "$(uname)" == "Darwin" ]; then
+    npm uninstall csscomb --save-dev
+  else
+  	sudo npm uninstall csscomb --save-dev
+  fi
   echo -e $COL_CYAN"Uninstall local csscomb npm packet"$COL_RESET
 fi
 
