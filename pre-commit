@@ -21,8 +21,15 @@ git diff > "$PATCH_FILE" --no-prefix
 git checkout -- .
 
 # получаем список файлов в которых были изменения, которые мы хотим закоммитить
-git_cached_files=$(git diff --cached --name-only --diff-filter=ACMR | xargs echo)
-if [ "$git_cached_files" ]; then
+git_cached_styles_files=$(git diff --cached --name-only --diff-filter=ACMR | find *.{css,scss,sass,less})
+git_cached_js_files=$(git diff --cached --name-only --diff-filter=ACMR | grep *.js)
+
+if [ "$git_cached_styles_files" ]; then
     #Собственно натравливаем CSScomb.js
-    $NPM_BIN/csscomb -v -l $git_cached_files || exit 1
+    $NPM_BIN/csscomb -v -l $git_cached_styles_files || exit 1
+fi
+
+if [ "$git_cached_js_files" ]; then
+    #Собственно натравливаем jshint.js
+    $NPM_BIN/jshint $git_cached_js_files || exit 1
 fi
