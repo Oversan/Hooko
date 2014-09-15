@@ -41,13 +41,21 @@ if exists node; then
   if [ "$(uname)" == "Darwin" ]; then
     npm install csscomb --save-dev
     npm install csscomb -g
+    npm install jshint --save-dev
+    npm install jshint -g
+    npm install fixmyjs --save-dev
+    npm install fixmyjs -g
   else
     sudo npm install csscomb --save-dev
     sudo npm install csscomb -g
+    sudo npm install jshint --save-dev
+    sudo npm install jshint -g
+    sudo npm install fixmyjs --save-dev
+    sudo npm install fixmyjs -g
   fi
-  echo -e $COL_CYAN"We have installed csscombjs as npm packet"$COL_RESET
+  echo -e $COL_CYAN"We have installed npm packets: csscomb, jshint, fixmyjs."$COL_RESET
 else
-  echo -e $COL_CYAN"You should install NodeJs"$COL_RESET
+  echo -e $COL_CYAN"You should install NodeJs."$COL_RESET
   rm .git/hooks/pre-commit
   rm .csscomb.json
   echo -e $COL_RED"Sctipt is terminated"$COL_RESET
