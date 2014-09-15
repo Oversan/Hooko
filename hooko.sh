@@ -27,6 +27,7 @@ if exists wget; then
 else
   if exists curl; then
     curl $hook > .git/hooks/pre-commit
+    chmod +x .git/hooks/pre-commit
     echo -e $successHookMsg
     curl -O $config
     echo -e $successConfigMsg
