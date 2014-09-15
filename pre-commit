@@ -12,7 +12,7 @@ function cleanup {
     exit $exit_code
 }
 
-#Прибираемся при выходе из скрипта
+#Clean after script is finished
 trap cleanup EXIT SIGINT SIGHUP
 
 # Создаем  патч
@@ -27,13 +27,16 @@ git_cached_js_files=$(git diff --cached --name-only --diff-filter=ACMR -- '*.js'
 if [ "$git_cached_styles_files" ]; then
     #Собственно натравливаем CSScomb.js
     echo "--------CSScomb-------"
-    $NPM_BIN/csscomb -v -l $git_cached_styles_files
-    echo "--------CSScomb-------"
+    $NPM_BIN/csscomb $git_cached_styles_files
+    git add $git_cached_styles_files
+    echo $git_cached_styles_files
+    echo "----------------------"
 fi
 
 if [ "$git_cached_js_files" ]; then
     #Собственно натравливаем jshint.js
-    echo "--------JShint--------"
-    $NPM_BIN/jshint $git_cached_js_files
-    echo "--------JShint--------"
+    echo "--------Fixmyjs--------"
+    $NPM_BIN/fixmyjs $git_cached_js_files
+    git add $git_cached_js_files
+    echo "----------------------"
 fi
