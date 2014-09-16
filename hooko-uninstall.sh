@@ -17,14 +17,12 @@ fi
 if [ -e -a "node_modules/.bin/@csscomb" ]; then
   if [ "$(uname)" == "Darwin" ]; then
     npm uninstall csscomb --save-dev
-    npm uninstall jshint --save-dev
     npm uninstall fixmyjs --save-dev
   else
   	sudo npm uninstall csscomb --save-dev
-    sudo npm uninstall jshint --save-dev
     sudo npm uninstall fixmyjs --save-dev
   fi
-  echo -e $COL_CYAN"Uninstall local npm packets: csscomb, jshint, fixmyjs."$COL_RESET
+  echo -e $COL_CYAN"Uninstall local npm packets: csscomb, fixmyjs."$COL_RESET
 fi
 
 echo -e $COL_CYAN"Hooko is uninstalled"$COL_RESET
